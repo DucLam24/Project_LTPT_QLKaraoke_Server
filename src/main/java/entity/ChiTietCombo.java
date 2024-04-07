@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,7 +19,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class ChiTietCombo {
+public class ChiTietCombo implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 763132077231141697L;
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "comboID")
@@ -28,6 +35,4 @@ public class ChiTietCombo {
     private MonAn monAn;
 	@Column(columnDefinition = "INT", nullable = false)
     private int soLuong;
-	
-//	sdsdsfd
 }

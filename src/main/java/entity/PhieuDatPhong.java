@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
 
@@ -16,7 +17,12 @@ import jakarta.persistence.Table;
 @lombok.ToString
 @Entity
 @Table(name = "PhieuDatPhong")
-public class PhieuDatPhong {
+public class PhieuDatPhong implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 285156758338642117L;
+
 	@Id
 	@Column(columnDefinition = "VARCHAR(20)", nullable = false)
 	private String phieuDatPhongID;
@@ -24,11 +30,14 @@ public class PhieuDatPhong {
 	@ManyToOne
 	@JoinColumn(name = "phongID")
 	private Phong phong;
+	
 	@ManyToOne
 	@JoinColumn(name = "khachHangID")
 	private KhachHang khachHang;
+	
 	@Column(columnDefinition = "DATE", nullable = false)
 	private LocalDate ngayDat;
+	
 	@Column(columnDefinition = "TIME", nullable = false)
 	private Time gioVao;
 }

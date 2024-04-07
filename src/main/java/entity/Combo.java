@@ -1,13 +1,10 @@
 package entity;
 
-import java.util.List;
+import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +19,11 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "Combo")
-public class Combo {
+public class Combo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8813396632475370467L;
 	@Id
 	@Column(columnDefinition = "VARCHAR(20)", nullable = false)
 	private String comboID;
@@ -34,7 +35,7 @@ public class Combo {
 	private double giaTien;
 	@Column(columnDefinition = "INT", nullable = false)
 	private int soLuongTon;
-	@Column(columnDefinition = "NVARCHAR(100)")
+	@Column(columnDefinition = "VARCHAR(100)")
 	private String hinhAnh;
 	@Column(columnDefinition = "BIT", nullable = false)
 	private boolean tinhTrang;

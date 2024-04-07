@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,7 +17,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ChiTietDatCombo")
-public class ChiTietDatCombo {
+public class ChiTietDatCombo implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4775336976087078609L;
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "phieuDatMonID")

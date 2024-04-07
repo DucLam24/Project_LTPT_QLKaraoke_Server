@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -15,15 +16,22 @@ import jakarta.persistence.ManyToOne;
 @lombok.NoArgsConstructor
 @lombok.ToString
 
-public class PhieuDatMon {
+public class PhieuDatMon implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1482120013574723872L;
 	@Id
 	@Column(columnDefinition = "VARCHAR(20)", nullable = false)
 	private String phieuDatMonID;
+	
 	@ManyToOne
 	@JoinColumn(name = "phongID")
 	private Phong phong;
+	
 	@Column(columnDefinition = "DATETIME", nullable = false)
 	private LocalDateTime thoiGianDat;
+	
 	@Column(columnDefinition = "BIT", nullable = false)
 	private boolean tinhTrang;
 }

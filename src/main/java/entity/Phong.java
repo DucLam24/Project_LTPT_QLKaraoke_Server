@@ -1,10 +1,14 @@
 package entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @lombok.Getter
@@ -14,7 +18,16 @@ import jakarta.persistence.Table;
 @lombok.ToString
 @Entity
 @Table(name = "Phong")
-public class Phong {
+@NamedQueries({
+		@NamedQuery(name = "getAllPhong", query = "SELECT p FROM Phong p"),
+		@NamedQuery(name = "getPhongByID", query = "SELECT p FROM Phong p WHERE p.phongID = :phongID") 
+		})
+public class Phong implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8563599570419612890L;
+
 	@Id
 	@Column(columnDefinition = "VARCHAR(20)", nullable = false)
 	private String phongID;
@@ -23,6 +36,7 @@ public class Phong {
 	private String tenPhong;
 	
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "NVARCHAR(50)", nullable = false)
 	private LoaiPhong loaiPhong;
     
     @Column(columnDefinition = "INT")
