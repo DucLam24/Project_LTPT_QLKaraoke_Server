@@ -28,4 +28,6 @@ public class ChiTietCombo {
     private MonAn monAn;
 	@Column(columnDefinition = "INT", nullable = false)
     private int soLuong;
+	
+//	sdsdsfd
 }
