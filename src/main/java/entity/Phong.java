@@ -19,10 +19,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Phong")
 @NamedQueries({
-		@NamedQuery(name = "getAllPhong", query = "SELECT p FROM Phong p"),
-		@NamedQuery(name = "getPhongByID", query = "SELECT p FROM Phong p WHERE p.phongID = :phongID") ,
-		@NamedQuery(name = "getPhongByLoaiPhong", query = "SELECT p FROM Phong p WHERE p.loaiPhong = :loaiPhong"),
-		@NamedQuery(name = "getPhongByTinhTrang", query = "SELECT p FROM Phong p WHERE p.tinhTrang = :tinhTrang")
+		@NamedQuery(name = "Phong.getAllPhong", query = "SELECT p FROM Phong p"),
+		@NamedQuery(name = "Phong.getPhongByID", query = "SELECT p FROM Phong p WHERE p.phongID = :phongID") ,
+		@NamedQuery(name = "Phong.getPhongByLoaiPhong", query = "SELECT p FROM Phong p WHERE p.loaiPhong = :loaiPhong"),
+		@NamedQuery(name = "Phong.getPhongByTinhTrang", query = "SELECT p FROM Phong p WHERE p.tinhTrang = :tinhTrang"),
 		})
 public class Phong implements Serializable{
 	/**

@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @lombok.Getter
@@ -17,6 +19,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ChiTietDatCombo")
+@NamedQueries({
+		@NamedQuery(name = "ChiTietDatCombo.findByPhieuDatMonID", 
+				query = "SELECT c FROM ChiTietDatCombo c WHERE c.phieuDatMon.phieuDatMonID = :phieuDatMonID"), })
 public class ChiTietDatCombo implements Serializable{
 	
 	/**

@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,7 +36,7 @@ public class KhachHang implements Serializable{
 	private boolean gioiTinh;
 	
 	@Column(columnDefinition = "DATE")
-	private String ngaySinh;
+	private LocalDate ngaySinh;
 	
 	@Column(columnDefinition = "VARCHAR(10)")
 	private String soDienThoai;

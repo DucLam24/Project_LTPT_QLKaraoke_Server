@@ -17,12 +17,12 @@ public class PhongImpl implements PhongDAO{
 	
 	@Override
 	public List<Phong> getAllPhong() {
-		return em.createNamedQuery("getAllPhong", Phong.class).getResultList();
+		return em.createNamedQuery("Phong.getAllPhong", Phong.class).getResultList();
 	}
 
 	@Override
 	public Phong getPhongByID(String phongID) {
-		return em.createNamedQuery("getPhongByID", Phong.class)
+		return em.createNamedQuery("Phong.getPhongByID", Phong.class)
 				.setParameter("phongID", phongID)
 				.getSingleResult();
 	}
@@ -30,7 +30,7 @@ public class PhongImpl implements PhongDAO{
 	@Override
 	public List<Phong> getPhongByTinhTrang(int tinhTrang) {
 		// TODO Auto-generated method stub
-		return em.createNamedQuery("getPhongByTinhTrang", Phong.class)
+		return em.createNamedQuery("Phong.getPhongByTinhTrang", Phong.class)
 				.setParameter("tinhTrang", tinhTrang)
 				.getResultList();
 	}

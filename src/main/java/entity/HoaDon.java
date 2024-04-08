@@ -1,14 +1,16 @@
 package entity;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @lombok.Getter
@@ -18,6 +20,10 @@ import jakarta.persistence.Table;
 @lombok.ToString
 @Entity
 @Table(name = "HoaDon")
+@NamedQueries({
+				@NamedQuery(name = "HoaDon.getHoaDonByPhongIDAndTinhTrang", 
+						query = "SELECT hd FROM HoaDon hd WHERE hd.phong.phongID = :phongID AND hd.tinhTrang = :tinhTrang"),
+})
 public class HoaDon implements Serializable {
 	/**
 	 * 
@@ -35,14 +41,14 @@ public class HoaDon implements Serializable {
 	@JoinColumn(name = "phongID")
 	private Phong phong;
 	
-	@Column(columnDefinition = "DATE", nullable = false)
-	private LocalDate ngay;
+	@Column(columnDefinition = "DATETIME", nullable = false)
+	private LocalDateTime gioVao;
 	
-	@Column(columnDefinition = "TIME", nullable = false)
-	private Time gioVao;
+	@Column(columnDefinition = "DATETIME")
+	private LocalDateTime gioRa;
 	
-	@Column(columnDefinition = "TIME", nullable = false)
-	private Time gioRa;
+	@Column(columnDefinition = "DATE")
+	private LocalDate ngayLapHoaDon;
 	
 	@ManyToOne
 	@JoinColumn(name = "phieuDatMonID")
