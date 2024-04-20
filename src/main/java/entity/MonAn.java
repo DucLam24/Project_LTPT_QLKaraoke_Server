@@ -2,7 +2,9 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,18 +12,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.Transient;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 
 @Entity
 @Table(name = "MonAn")
@@ -60,6 +54,120 @@ public class MonAn implements Serializable {
 
 	@Column(columnDefinition = "BIT", nullable = false)
 	private boolean tinhTrang;
+	
+	//Chiều ngược lại
+	@OneToMany(mappedBy = "monAn",cascade = CascadeType.MERGE)
+	@Transient
+	private Set<ChiTietCombo> chiTietCombo;
+	
+	@OneToMany(mappedBy = "monAn",cascade = CascadeType.MERGE)
+	@Transient
+	private Set<ChiTietDatMon> chiTietDatMon;
+
+	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "MonAn [monAnID=" + monAnID + ", tenMonAn=" + tenMonAn + ", loaiMonAn=" + loaiMonAn + ", donGia="
+				+ donGia + ", soLuongTon=" + soLuongTon + ", donViTinh=" + donViTinh + ", hinhAnh=" + hinhAnh
+				+ ", tinhTrang=" + tinhTrang + "]";
+	}
+
+	public String getMonAnID() {
+		return monAnID;
+	}
+
+	public void setMonAnID(String monAnID) {
+		this.monAnID = monAnID;
+	}
+
+	public String getTenMonAn() {
+		return tenMonAn;
+	}
+
+	public void setTenMonAn(String tenMonAn) {
+		this.tenMonAn = tenMonAn;
+	}
+
+	public LoaiMonAn getLoaiMonAn() {
+		return loaiMonAn;
+	}
+
+	public void setLoaiMonAn(LoaiMonAn loaiMonAn) {
+		this.loaiMonAn = loaiMonAn;
+	}
+
+	public double getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(double donGia) {
+		this.donGia = donGia;
+	}
+
+	public int getSoLuongTon() {
+		return soLuongTon;
+	}
+
+	public void setSoLuongTon(int soLuongTon) {
+		this.soLuongTon = soLuongTon;
+	}
+
+	public String getDonViTinh() {
+		return donViTinh;
+	}
+
+	public void setDonViTinh(String donViTinh) {
+		this.donViTinh = donViTinh;
+	}
+
+	public String getHinhAnh() {
+		return hinhAnh;
+	}
+
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
+	}
+
+	public boolean isTinhTrang() {
+		return tinhTrang;
+	}
+
+	public void setTinhTrang(boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
+
+	public MonAn() {
+		super();
+	}
+
+	public MonAn(String monAnID, String tenMonAn, LoaiMonAn loaiMonAn, double donGia, int soLuongTon, String donViTinh,
+			String hinhAnh, boolean tinhTrang) {
+		super();
+		this.monAnID = monAnID;
+		this.tenMonAn = tenMonAn;
+		this.loaiMonAn = loaiMonAn;
+		this.donGia = donGia;
+		this.soLuongTon = soLuongTon;
+		this.donViTinh = donViTinh;
+		this.hinhAnh = hinhAnh;
+		this.tinhTrang = tinhTrang;
+	}
+	
+
+	public MonAn(String monAnID, String tenMonAn, LoaiMonAn loaiMonAn, double donGia, int soLuongTon, String donViTinh,
+			boolean tinhTrang) {
+		super();
+		this.monAnID = monAnID;
+		this.tenMonAn = tenMonAn;
+		this.loaiMonAn = loaiMonAn;
+		this.donGia = donGia;
+		this.soLuongTon = soLuongTon;
+		this.donViTinh = donViTinh;
+		this.tinhTrang = tinhTrang;
+	}
 
 	@Override
 	public int hashCode() {

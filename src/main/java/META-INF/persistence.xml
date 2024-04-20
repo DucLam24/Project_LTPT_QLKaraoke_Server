@@ -18,10 +18,12 @@
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="jakarta.persistence.jdbc.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
-            <property name="hibernate.connection.url" value="jdbc:sqlserver://localhost:1433;databaseName=QuanLyKaraoke;trustServerCertificate=true;encrypt=true;"/>
+            <property name="hibernate.connection.url" value="jdbc:sqlserver://localhost:1433;databaseName=TestDatabase;trustServerCertificate=true;encrypt=true;"/>
             <property name="hibernate.connection.username" value="sa"/>
             <property name="hibernate.connection.password" value="123456"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <!--  Tự động update database khi có thay đổi trong entity --> 
+      
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>

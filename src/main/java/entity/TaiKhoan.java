@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,11 +19,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "TaiKhoan")
 @NamedQueries({ 
@@ -50,4 +46,76 @@ public class TaiKhoan implements Serializable{
 	
 	@Column(columnDefinition = "BIT", nullable = false)
 	private boolean tinhTrang;
+
+	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "TaiKhoan [nhanVien=" + nhanVien + ", matKhau=" + matKhau + ", quyen=" + quyen + ", tinhTrang="
+				+ tinhTrang + "]";
+	}
+
+	public NhanVien getNhanVien() {
+		return nhanVien;
+	}
+
+	public void setNhanVien(NhanVien nhanVien) {
+		this.nhanVien = nhanVien;
+	}
+
+	public String getMatKhau() {
+		return matKhau;
+	}
+
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
+	}
+
+	public Quyen getQuyen() {
+		return quyen;
+	}
+
+	public void setQuyen(Quyen quyen) {
+		this.quyen = quyen;
+	}
+
+	public boolean isTinhTrang() {
+		return tinhTrang;
+	}
+
+	public void setTinhTrang(boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
+
+	public TaiKhoan(NhanVien nhanVien, String matKhau, Quyen quyen, boolean tinhTrang) {
+		super();
+		this.nhanVien = nhanVien;
+		this.matKhau = matKhau;
+		this.quyen = quyen;
+		this.tinhTrang = tinhTrang;
+	}
+
+	public TaiKhoan() {
+		super();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(matKhau, nhanVien, quyen, tinhTrang);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof TaiKhoan))
+			return false;
+		TaiKhoan other = (TaiKhoan) obj;
+		return Objects.equals(matKhau, other.matKhau) && Objects.equals(nhanVien, other.nhanVien)
+				&& quyen == other.quyen && tinhTrang == other.tinhTrang;
+	}
+	
+	
 }
